@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import Post ,BlogComment
 from django.contrib import messages
-from blog.templatetags import extra
 
 
 # Create your views here.
@@ -29,6 +28,8 @@ def postComment(request):
         postSno = request.POST.get('postSno')
         post = Post.objects.get(sno = postSno)
         parentSno = request.POST.get('parentSno')
+        
+        print(comment,user,post,parentSno,postSno)
 
         if parentSno == "": 
             comment = BlogComment(comment = comment, user = user, post = post)
